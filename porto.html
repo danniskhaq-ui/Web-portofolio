@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeri Proyek — Bangun Karya Mandiri</title>
+  <meta name="description" content="Galeri dokumentasi proyek konstruksi, renovasi, dan desain-bangun yang telah dikerjakan Bangun Karya Mandiri." />
+  <link rel="icon" href="images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="bkm-header">
+    <div class="bkm-container bkm-nav" id="bkm-nav">
+      <a href="index.html" class="bkm-logo">
+        <img src="images/logo.png" alt="Bangun Karya Mandiri" />
+      </a>
+      <nav class="bkm-nav-links">
+        <!-- <a href="index.html#layanan">Layanan</a> -->
+        <!-- <a href="index.html#proyek">Proyek</a> -->
+        <a href="about.html">Tentang Saya</a>
+        <a href="porto.html">Portofolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Kontak Kami</a>
+      </nav>
+      <a href="contact.html" class="bkm-nav-cta">Konsultasi Gratis</a>
+      <button class="bkm-nav-toggle" id="bkm-nav-toggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="bkm-about-hero bkm-blueprint-bg">
+      <div class="bkm-container">
+        <p class="bkm-eyebrow">Galeri</p>
+        <h1 style="font-size:clamp(2rem,4vw,2.8rem);max-width:22ch;margin-top:14px;">Dokumentasi proyek, dari titik nol sampai serah terima.</h1>
+        <p style="max-width:60ch;color:var(--bkm-ink-soft);margin-top:18px;font-size:16.5px;">Setiap foto di bawah ini masih berupa placeholder — ganti dengan foto lapangan asli sebelum publish.</p>
+      </div>
+    </section>
+
+    <section class="bkm-section">
+      <div class="bkm-container">
+        <div class="bkm-filter-bar" id="bkm-filter-bar">
+          <button class="bkm-filter-btn is-active" data-filter="all">Semua</button>
+          <button class="bkm-filter-btn" data-filter="konstruksi">Konstruksi Baru</button>
+          <button class="bkm-filter-btn" data-filter="renovasi">Renovasi</button>
+          <button class="bkm-filter-btn" data-filter="komersial">Komersial</button>
+        </div>
+
+        <div class="bkm-gallery-grid" id="bkm-gallery-grid">
+          <div class="bkm-gallery-item" data-category="konstruksi">
+            <div class="bkm-gallery-placeholder">Foto Proyek 1</div>
+            <div class="bkm-gallery-caption">Rumah Tinggal 2 Lantai — Yogyakarta<span>Konstruksi Baru</span></div>
+          </div>
+          <div class="bkm-gallery-item" data-category="renovasi">
+            <div class="bkm-gallery-placeholder">Foto Proyek 2</div>
+            <div class="bkm-gallery-caption">Renovasi Ruko Dua Lantai — Depok<span>Renovasi</span></div>
+          </div>
+          <div class="bkm-gallery-item" data-category="komersial">
+            <div class="bkm-gallery-placeholder">Foto Proyek 3</div>
+            <div class="bkm-gallery-caption">Gudang Logistik — Bekasi<span>Komersial</span></div>
+          </div>
+          <div class="bkm-gallery-item" data-category="komersial">
+            <div class="bkm-gallery-placeholder">Foto Proyek 4</div>
+            <div class="bkm-gallery-caption">Perluasan Kantor Cabang — Sleman<span>Komersial</span></div>
+          </div>
+          <div class="bkm-gallery-item" data-category="renovasi">
+            <div class="bkm-gallery-placeholder">Foto Proyek 5</div>
+            <div class="bkm-gallery-caption">Renovasi Fasad Rumah — Solo<span>Renovasi</span></div>
+          </div>
+          <div class="bkm-gallery-item" data-category="konstruksi">
+            <div class="bkm-gallery-placeholder">Foto Proyek 6</div>
+            <div class="bkm-gallery-caption">Ruko 3 Lantai — Klaten<span>Konstruksi Baru</span></div>
+          </div>
+          <div class="bkm-gallery-item" data-category="konstruksi">
+            <div class="bkm-gallery-placeholder">Foto Proyek 7</div>
+            <div class="bkm-gallery-caption">Rumah Tinggal 1 Lantai — Bantul<span>Konstruksi Baru</span></div>
+          </div>
+          <div class="bkm-gallery-item" data-category="komersial">
+            <div class="bkm-gallery-placeholder">Foto Proyek 8</div>
+            <div class="bkm-gallery-caption">Showroom Kendaraan — Yogyakarta<span>Komersial</span></div>
+          </div>
+          <div class="bkm-gallery-item" data-category="renovasi">
+            <div class="bkm-gallery-placeholder">Foto Proyek 9</div>
+            <div class="bkm-gallery-caption">Renovasi Dapur &amp; Taman Belakang — Sleman<span>Renovasi</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bkm-cta-band" id="kontak">
+      <div class="bkm-container bkm-cta-band-inner">
+        <h2>Ingin melihat proyek yang lebih dekat dengan kebutuhanmu?</h2>
+        <a href="contact.html" class="bkm-btn bkm-btn-primary">Hubungi Kami</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bkm-footer">
+    <div class="bkm-container">
+      <div class="bkm-footer-grid">
+        <div>
+          <h4>Bangun Karya Mandiri</h4>
+          <p style="max-width:32ch;font-size:14px;">Kontraktor konstruksi dan renovasi untuk proyek residensial dan komersial.</p>
+        </div>
+        <div>
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="index.html#layanan">Layanan</a></li>
+            <li><a href="index.html#proyek">Proyek</a></li>
+            <li><a href="gallery.html">Galeri</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">Tentang Kami</a></li>
+            <li><a href="contact.html">Kontak Kami</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <ul>
+            <li>halo@bangunkaryamandiri.co.id</li>
+            <li>+62 812-0000-0000</li>
+            <li>Yogyakarta, Indonesia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bkm-container bkm-footer-bottom" style="padding:0;">
+        <span>&copy; 2026 Bangun Karya Mandiri. Semua hak dilindungi.</span>
+        <span>Konten pada halaman ini masih dummy — silakan diganti.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

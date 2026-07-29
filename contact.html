@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontak Kami — Bangun Karya Mandiri</title>
+  <meta name="description" content="Hubungi Bangun Karya Mandiri untuk konsultasi proyek konstruksi, renovasi, atau desain-bangun." />
+  <link rel="icon" href="images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="bkm-header">
+    <div class="bkm-container bkm-nav" id="bkm-nav">
+      <a href="index.html" class="bkm-logo">
+        <img src="images/logo.png" alt="Bangun Karya Mandiri" />
+      </a>
+      <nav class="bkm-nav-links">
+        <!-- <a href="index.html#layanan">Layanan</a> -->
+        <!-- <a href="index.html#proyek">Proyek</a> -->
+        <a href="about.html">Tentang Saya</a>
+        <a href="porto.html">Portofolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Kontak Kami</a>
+      </nav>
+      <a href="contact.html" class="bkm-nav-cta">Konsultasi Gratis</a>
+      <button class="bkm-nav-toggle" id="bkm-nav-toggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="bkm-about-hero bkm-blueprint-bg">
+      <div class="bkm-container">
+        <p class="bkm-eyebrow">Kontak Kami</p>
+        <h1 style="font-size:clamp(2rem,4vw,2.8rem);max-width:22ch;margin-top:14px;">Ceritakan rencana proyekmu, kami bantu hitung langkah pertamanya.</h1>
+        <p style="max-width:60ch;color:var(--bkm-ink-soft);margin-top:18px;font-size:16.5px;">Konsultasi awal tidak dikenakan biaya. Isi form di samping, atau hubungi kami langsung lewat kontak di bawah.</p>
+      </div>
+    </section>
+
+    <section class="bkm-section">
+      <div class="bkm-container bkm-contact-grid">
+
+        <div>
+          <p class="bkm-eyebrow">Info Kontak</p>
+          <ul class="bkm-info-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1b2430" stroke-width="1.6"><path d="M4 4h16v16H4z M4 6l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <h3>Email</h3>
+                <p>halo@bangunkaryamandiri.co.id</p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1b2430" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.9.6 2.7a2 2 0 01-.5 2.1L8 9.7a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <h3>Telepon / WhatsApp</h3>
+                <p>+62 812-0000-0000</p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1b2430" stroke-width="1.6"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z M12 13a3 3 0 100-6 3 3 0 000 6z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <h3>Alamat Kantor</h3>
+                <p>Jl. Contoh Raya No. 00, Sleman, Daerah Istimewa Yogyakarta</p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1b2430" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <h3>Jam Operasional</h3>
+                <p>Senin&ndash;Sabtu, 08.00&ndash;17.00 WIB</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="bkm-map-placeholder">
+            Placeholder peta lokasi — ganti dengan embed Google Maps di sini
+          </div>
+        </div>
+
+        <div>
+          <p class="bkm-eyebrow">Formulir Konsultasi</p>
+          <form class="bkm-form" id="bkm-contact-form" style="margin-top:14px;">
+            <div class="bkm-form-row">
+              <div class="bkm-field">
+                <label for="bkm-name">Nama Lengkap</label>
+                <input type="text" id="bkm-name" name="name" required />
+              </div>
+              <div class="bkm-field">
+                <label for="bkm-phone">No. WhatsApp</label>
+                <input type="tel" id="bkm-phone" name="phone" required />
+              </div>
+            </div>
+            <div class="bkm-form-row">
+              <div class="bkm-field">
+                <label for="bkm-email">Email</label>
+                <input type="email" id="bkm-email" name="email" required />
+              </div>
+              <div class="bkm-field">
+                <label for="bkm-service">Jenis Kebutuhan</label>
+                <select id="bkm-service" name="service">
+                  <option>Konstruksi Baru</option>
+                  <option>Renovasi &amp; Perluasan</option>
+                  <option>Desain-Bangun</option>
+                  <option>Lainnya</option>
+                </select>
+              </div>
+            </div>
+            <div class="bkm-field">
+              <label for="bkm-message">Ceritakan Kebutuhanmu</label>
+              <textarea id="bkm-message" name="message" required></textarea>
+            </div>
+            <p class="bkm-form-note">
+              Catatan untuk developer: form ini belum terhubung ke backend apa pun. Untuk hosting statis di Vercel, sambungkan lewat layanan seperti Formspree, Getform, atau Vercel Serverless Function, lalu isi atribut <code>action</code> di tag &lt;form&gt;.
+            </p>
+            <button type="submit" class="bkm-btn bkm-btn-primary">Kirim Pesan</button>
+            <p class="bkm-form-status is-success" id="bkm-form-status">Pesan tersimpan secara lokal (demo) — sambungkan form ke backend agar benar-benar terkirim.</p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="bkm-footer">
+    <div class="bkm-container">
+      <div class="bkm-footer-grid">
+        <div>
+          <h4>Bangun Karya Mandiri</h4>
+          <p style="max-width:32ch;font-size:14px;">Kontraktor konstruksi dan renovasi untuk proyek residensial dan komersial.</p>
+        </div>
+        <div>
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="index.html#layanan">Layanan</a></li>
+            <li><a href="index.html#proyek">Proyek</a></li>
+            <li><a href="gallery.html">Galeri</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">Tentang Kami</a></li>
+            <li><a href="contact.html">Kontak Kami</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <ul>
+            <li>halo@bangunkaryamandiri.co.id</li>
+            <li>+62 812-0000-0000</li>
+            <li>Yogyakarta, Indonesia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bkm-container bkm-footer-bottom" style="padding:0;">
+        <span>&copy; 2026 Bangun Karya Mandiri. Semua hak dilindungi.</span>
+        <span>Konten pada halaman ini masih dummy — silakan diganti.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
