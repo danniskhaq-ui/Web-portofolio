@@ -1,4 +1,4 @@
-// Bangun Karya Mandiri — script.js
+// Website Portofolio — script.js
 // Sengaja minimal: hanya toggle menu mobile, tidak ada dependency eksternal.
 
 (function () {
