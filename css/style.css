@@ -773,11 +773,11 @@ a:focus-visible, button:focus-visible {
 
 [data-theme="modern"] body {
   background:
-    radial-gradient(ellipse 80% 70% at 10% 20%, rgba(56,189,248,0.22) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 60% at 90% 10%, rgba(99,102,241,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 75% 65% at 80% 90%, rgba(14,165,233,0.16) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 20% 85%, rgba(139,92,246,0.14) 0%, transparent 60%),
-    linear-gradient(180deg, #e0f2fe 0%, #e0e7ff 20%, #f0f9ff 40%, #eef2ff 60%, #f8fafc 80%, #e0f2fe 100%);
+    radial-gradient(ellipse 70% 60% at 15% 25%, rgba(56,189,248,0.20) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 85% 15%, rgba(99,102,241,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 65% 55% at 75% 80%, rgba(14,165,233,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 25% 75%, rgba(139,92,246,0.12) 0%, transparent 55%),
+    linear-gradient(180deg, #e0f2fe 0%, #dbeafe 20%, #e0e7ff 40%, #f0f9ff 60%, #e0f2fe 80%, #dbeafe 100%);
   background-attachment: fixed;
   background-size: cover;
   color: var(--bkm-navy);
@@ -809,10 +809,10 @@ a:focus-visible, button:focus-visible {
 
 /* ── Header ── */
 [data-theme="modern"] .bkm-header {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(15,23,42,0.06);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15,23,42,0.08);
 }
 
 [data-theme="modern"] .bkm-nav-links a:hover {
@@ -877,14 +877,11 @@ a:focus-visible, button:focus-visible {
 }
 
 [data-theme="modern"] .bkm-hero-panel {
-  background: rgba(15,23,42,0.88);
+  background: var(--bkm-navy);
   color: var(--bkm-paper);
   border-radius: 14px;
   box-shadow: 0 8px 30px rgba(15, 23, 42, 0.18);
   padding: 32px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.08);
 }
 [data-theme="modern"] .bkm-hero-panel .bkm-eyebrow { color: var(--bkm-orange); }
 [data-theme="modern"] .bkm-hero-panel .bkm-eyebrow::before { background: var(--bkm-orange); }
@@ -900,8 +897,27 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ── Sections ── */
-[data-theme="modern"] .bkm-section { padding: 100px 0; background: transparent; }
-[data-theme="modern"] .bkm-section-alt { background: rgba(248,250,252,0.5); backdrop-filter: blur(8px); }
+[data-theme="modern"] .bkm-section {
+  padding: 100px 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 25%, rgba(56,189,248,0.20) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 85% 15%, rgba(99,102,241,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 65% 55% at 75% 80%, rgba(14,165,233,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 25% 75%, rgba(139,92,246,0.12) 0%, transparent 55%),
+    linear-gradient(180deg, #e0f2fe 0%, #dbeafe 20%, #e0e7ff 40%, #f0f9ff 60%, #e0f2fe 80%, #dbeafe 100%);
+  background-attachment: fixed;
+  background-size: cover;
+}
+[data-theme="modern"] .bkm-section-alt {
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 25%, rgba(56,189,248,0.20) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 85% 15%, rgba(99,102,241,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 65% 55% at 75% 80%, rgba(14,165,233,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 25% 75%, rgba(139,92,246,0.12) 0%, transparent 55%),
+    linear-gradient(180deg, #dbeafe 0%, #c7d2fe 20%, #bfdbfe 40%, #dbeafe 60%, #c7d2fe 80%, #bfdbfe 100%);
+  background-attachment: fixed;
+  background-size: cover;
+}
 
 [data-theme="modern"] .bkm-section-head h2 {
   font-weight: 700;
@@ -918,13 +934,12 @@ a:focus-visible, button:focus-visible {
   border: none;
 }
 [data-theme="modern"] .bkm-card {
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.88);
   border: 1px solid rgba(15,23,42,0.08);
   border-radius: 14px;
   padding: 36px 32px;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(15,23,42,0.06);
 }
 [data-theme="modern"] .bkm-card:hover {
   transform: translateY(-4px);
@@ -980,13 +995,12 @@ a:focus-visible, button:focus-visible {
   gap: 12px;
 }
 [data-theme="modern"] .bkm-project-row {
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.92);
   border: 1px solid rgba(15,23,42,0.08);
   border-radius: 12px;
   padding: 24px 32px;
   transition: all 0.2s ease;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(15,23,42,0.04);
 }
 [data-theme="modern"] .bkm-project-row:hover {
   border-color: rgba(15, 23, 42, 0.18);
@@ -1017,12 +1031,10 @@ a:focus-visible, button:focus-visible {
 
 /* ── CTA Band ── */
 [data-theme="modern"] .bkm-cta-band {
-  background: rgba(15,23,42,0.92);
+  background: var(--bkm-navy);
   color: var(--bkm-paper);
   padding: 72px 0;
   border-radius: 0;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
 }
 [data-theme="modern"] .bkm-cta-band h2 {
   font-weight: 700;
@@ -1104,9 +1116,8 @@ a:focus-visible, button:focus-visible {
   border: 1px solid rgba(15,23,42,0.08);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 4px 20px rgba(15,23,42,0.06);
 }
 [data-theme="modern"] .bkm-gallery-item:hover {
   transform: translateY(-4px);
@@ -1126,10 +1137,9 @@ a:focus-visible, button:focus-visible {
   border-radius: 16px;
   border: 1px solid rgba(15,23,42,0.08);
   padding: 36px;
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.92);
   transition: box-shadow 0.2s ease;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(15,23,42,0.06);
 }
 [data-theme="modern"] .bkm-blog-featured:hover {
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
@@ -1145,12 +1155,11 @@ a:focus-visible, button:focus-visible {
   gap: 32px;
 }
 [data-theme="modern"] .bkm-blog-card {
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.92);
   border: 1px solid rgba(15,23,42,0.08);
   border-radius: 14px;
   padding: 20px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(15,23,42,0.06);
 }
 [data-theme="modern"] .bkm-blog-card .bkm-gallery-placeholder {
   border-radius: 12px;
@@ -1203,10 +1212,8 @@ a:focus-visible, button:focus-visible {
   border-radius: 16px;
   border: 1px solid rgba(15,23,42,0.08);
   padding: 40px;
-  background: rgba(255,255,255,0.72);
-  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
 }
 [data-theme="modern"] .bkm-field label {
   color: var(--bkm-ink-soft);
