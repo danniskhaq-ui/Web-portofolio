@@ -60,6 +60,47 @@ h1, h2, h3 {
   background-size: 40px 40px;
 }
 
+/* ── Modern Minimalist Background (gunakan class ini sebagai alternatif) ── */
+.bkm-blueprint-bg--modern {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(14,165,233,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(99,102,241,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 50% 80%, rgba(14,165,233,0.05) 0%, transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  background-size: auto;
+}
+
+.bkm-blueprint-bg--dots {
+  background:
+    radial-gradient(circle, rgba(15,23,42,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: #ffffff;
+}
+
+.bkm-blueprint-bg--lines {
+  background:
+    linear-gradient(180deg, rgba(15,23,42,0.04) 1px, transparent 1px);
+  background-size: 100% 32px;
+  background-color: #ffffff;
+}
+
+.bkm-blueprint-bg--noise {
+  background-color: #fafbfc;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+.bkm-blueprint-bg--diagonal {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 40px,
+      rgba(15,23,42,0.02) 40px,
+      rgba(15,23,42,0.02) 41px
+    );
+  background-color: #ffffff;
+}
+
 /* Corner tick marks — the recurring "drawing annotation" signature */
 .bkm-tick {
   position: relative;
@@ -735,10 +776,12 @@ a:focus-visible, button:focus-visible {
 
 /* ── Blueprint grid ── */
 [data-theme="modern"] .bkm-blueprint-bg {
-  background-image:
-    linear-gradient(var(--bkm-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--bkm-line) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(14,165,233,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(99,102,241,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 50% 80%, rgba(14,165,233,0.05) 0%, transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  background-size: auto;
 }
 
 /* ── Tick marks ── */
