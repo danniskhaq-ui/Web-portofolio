@@ -21,25 +21,6 @@
   --bkm-container: 1160px;
 }
 
-/* Dark mode palette — activated by adding data-theme="dark" to <html> */
-[data-theme="dark"] {
-  --bkm-navy: #f4f4f6;
-  --bkm-navy-soft: #e2e2e6;
-  --bkm-paper: #101218;
-  --bkm-paper-dim: #181b23;
-  --bkm-steel: #94a3b8;
-  --bkm-orange: #818cf8;
-  --bkm-orange-dim: #a5b4fc;
-  --bkm-line: rgba(244, 244, 246, 0.12);
-  --bkm-ink-soft: rgba(244, 244, 246, 0.64);
-}
-
-/* Smooth transition when switching themes */
-body, .bkm-header, .bkm-hero-panel, .bkm-footer, .bkm-cta-band,
-.bkm-card, .bkm-form, .bkm-field input, .bkm-field select, .bkm-field textarea {
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-}
-
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -71,12 +52,16 @@ h1, h2, h3 {
   padding: 0 24px;
 }
 
-/* Soft radial glow backdrop, used behind the hero and section dividers */
+/* Soft radial glow + faint code-snippet texture backdrop, used behind the hero */
 .bkm-blueprint-bg {
-  background:
+  background-image:
     radial-gradient(700px circle at 15% 0%, rgba(79, 70, 229, 0.14), transparent 62%),
     radial-gradient(600px circle at 100% 30%, rgba(79, 70, 229, 0.10), transparent 62%),
-    var(--bkm-paper);
+    url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27380%27%20height%3D%27280%27%3E%20%3Ctext%20x%3D%2710%27%20y%3D%2722%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2867%2C56%2C202%2C0.38%29%27%3Econst%20dev%20%3D%20%7B%3C/text%3E%20%3Ctext%20x%3D%2726%27%20y%3D%2740%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2830%2C37%2C48%2C0.2%29%27%3Ename%3A%20%27Wildan%20A.%27%2C%3C/text%3E%20%3Ctext%20x%3D%2726%27%20y%3D%2758%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2830%2C37%2C48%2C0.2%29%27%3Erole%3A%20%27PPLG%20Student%27%2C%3C/text%3E%20%3Ctext%20x%3D%2726%27%20y%3D%2776%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2830%2C37%2C48%2C0.2%29%27%3Estack%3A%20%5B%27HTML%27%2C%27CSS%27%2C%27JS%27%5D%2C%3C/text%3E%20%3Ctext%20x%3D%2710%27%20y%3D%2794%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2867%2C56%2C202%2C0.38%29%27%3E%7D%3B%3C/text%3E%20%3Ctext%20x%3D%2710%27%20y%3D%27124%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2830%2C37%2C48%2C0.18%29%27%3Efunction%20build%28idea%29%20%7B%3C/text%3E%20%3Ctext%20x%3D%2726%27%20y%3D%27142%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2830%2C37%2C48%2C0.18%29%27%3Ereturn%20idea%20%2B%20effort%3B%3C/text%3E%20%3Ctext%20x%3D%2710%27%20y%3D%27160%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2830%2C37%2C48%2C0.18%29%27%3E%7D%3C/text%3E%20%3Ctext%20x%3D%2710%27%20y%3D%27190%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2867%2C56%2C202%2C0.34%29%27%3E%26lt%3Bsection%20class%3D%22proyek%22%26gt%3B%3C/text%3E%20%3Ctext%20x%3D%2710%27%20y%3D%27208%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2867%2C56%2C202%2C0.34%29%27%3E%26lt%3B/section%26gt%3B%3C/text%3E%20%3Ctext%20x%3D%2710%27%20y%3D%27238%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2830%2C37%2C48%2C0.18%29%27%3ESELECT%20%2A%20FROM%20proyek%3C/text%3E%20%3Ctext%20x%3D%2710%27%20y%3D%27256%27%20font-family%3D%27monospace%27%20font-size%3D%2711%27%20fill%3D%27rgba%2830%2C37%2C48%2C0.18%29%27%3EWHERE%20status%20%3D%20%27selesai%27%3B%3C/text%3E%20%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-position: top left, top right, top right;
+  background-size: auto, auto, 380px 280px;
+  background-color: var(--bkm-paper);
 }
 
 /* Corner tick marks — the recurring "drawing annotation" signature */
@@ -161,26 +146,6 @@ h1, h2, h3 {
   transition: background 0.15s ease, color 0.15s ease;
 }
 .bkm-nav-cta:hover { background: var(--bkm-navy); color: var(--bkm-paper); }
-
-/* Dark mode toggle button */
-.bkm-theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--bkm-line);
-  border-radius: var(--bkm-radius);
-  background: transparent;
-  color: var(--bkm-navy);
-  cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease;
-}
-.bkm-theme-toggle:hover { border-color: var(--bkm-navy); }
-.bkm-theme-toggle svg { width: 18px; height: 18px; }
-.bkm-theme-toggle .bkm-icon-sun { display: none; }
-[data-theme="dark"] .bkm-theme-toggle .bkm-icon-sun { display: block; }
-[data-theme="dark"] .bkm-theme-toggle .bkm-icon-moon { display: none; }
 
 .bkm-nav-toggle {
   display: none;
