@@ -255,31 +255,47 @@ h1, h2, h3 {
 .bkm-section { padding: 88px 0; }
 .bkm-section-alt { background: var(--bkm-paper-dim); }
 
-/* Quiet dot-grid texture behind card/grid-based sections, so they don't feel empty */
+/* Shared soft indigo glow used behind every non-hero section, for a little warmth */
 .bkm-section:has(.bkm-grid-3),
 .bkm-section:has(.bkm-gallery-grid),
 .bkm-section:has(.bkm-blog-grid),
-.bkm-section:has(.bkm-blog-featured),
 .bkm-section:has(.bkm-contact-grid),
 .bkm-section:has(.bkm-team-grid) {
-  background-image:
-    radial-gradient(560px circle at 100% 0%, rgba(67, 56, 202, 0.06), transparent 65%),
-    radial-gradient(rgba(30, 37, 48, 0.2) 1.5px, transparent 1.5px);
-  background-position: top right, 0 0;
-  background-repeat: no-repeat, repeat;
-  background-size: auto, 24px 24px;
+  background-image: radial-gradient(560px circle at 100% 0%, rgba(67, 56, 202, 0.06), transparent 65%);
+  background-repeat: no-repeat;
+  background-position: top right;
 }
 
-/* Fallback: same texture applied directly to the grid wrappers themselves,
-   so it still shows even on browsers without :has() support */
-.bkm-gallery-grid,
-.bkm-blog-grid,
-.bkm-blog-featured,
-.bkm-contact-grid,
-.bkm-team-grid {
+/* Keahlian — dot grid */
+.bkm-grid-3 {
   background-image: radial-gradient(rgba(30, 37, 48, 0.2) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
-  background-position: -12px -12px;
+}
+
+/* Galeri — diagonal hatch, echoes the project photos' frame feel */
+.bkm-gallery-grid {
+  background-image: repeating-linear-gradient(135deg, rgba(30, 37, 48, 0.14) 0 1px, transparent 1px 14px);
+}
+
+/* Blog — horizontal rules, like lined paper / an article layout */
+.bkm-blog-grid,
+.bkm-blog-featured {
+  background-image: repeating-linear-gradient(to bottom, rgba(30, 37, 48, 0.12) 0 1px, transparent 1px 26px);
+}
+
+/* Kontak — small plus marks, a "connect" motif */
+.bkm-contact-grid {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2722%27%20height%3D%2722%27%3E%20%3Cpath%20d%3D%27M11%207v8M7%2011h8%27%20stroke%3D%27rgba%2830%2C37%2C48%2C0.22%29%27%20stroke-width%3D%271.4%27%20stroke-linecap%3D%27round%27/%3E%20%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 22px 22px;
+}
+
+/* Tim — straight blueprint grid, echoes the hero's technical feel */
+.bkm-team-grid {
+  background-image:
+    linear-gradient(rgba(30, 37, 48, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 37, 48, 0.10) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 /* Faint diagonal hatch behind the process timeline, to suggest a "path" */
