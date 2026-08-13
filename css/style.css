@@ -52,12 +52,12 @@ h1, h2, h3 {
   padding: 0 24px;
 }
 
-/* Blueprint grid backdrop, used behind the hero and section dividers */
+/* Soft radial glow backdrop, used behind the hero and section dividers */
 .bkm-blueprint-bg {
-  background-image:
-    linear-gradient(var(--bkm-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--bkm-line) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background:
+    radial-gradient(600px circle at 15% 0%, rgba(79, 70, 229, 0.06), transparent 60%),
+    radial-gradient(500px circle at 100% 30%, rgba(79, 70, 229, 0.04), transparent 60%),
+    var(--bkm-paper);
 }
 
 /* Corner tick marks — the recurring "drawing annotation" signature */
