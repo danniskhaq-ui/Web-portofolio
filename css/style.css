@@ -8,8 +8,8 @@
   --bkm-paper: #fafafa;
   --bkm-paper-dim: #f1f1f3;
   --bkm-steel: #64748b;
-  --bkm-orange: #4f46e5;
-  --bkm-orange-dim: #4338ca;
+  --bkm-orange: #4338ca;
+  --bkm-orange-dim: #3730a3;
   --bkm-line: rgba(30, 37, 48, 0.10);
   --bkm-ink-soft: rgba(30, 37, 48, 0.58);
 
@@ -19,6 +19,25 @@
 
   --bkm-radius: 6px;
   --bkm-container: 1160px;
+}
+
+/* Dark mode palette — activated by adding data-theme="dark" to <html> */
+[data-theme="dark"] {
+  --bkm-navy: #f4f4f6;
+  --bkm-navy-soft: #e2e2e6;
+  --bkm-paper: #101218;
+  --bkm-paper-dim: #181b23;
+  --bkm-steel: #94a3b8;
+  --bkm-orange: #818cf8;
+  --bkm-orange-dim: #a5b4fc;
+  --bkm-line: rgba(244, 244, 246, 0.12);
+  --bkm-ink-soft: rgba(244, 244, 246, 0.64);
+}
+
+/* Smooth transition when switching themes */
+body, .bkm-header, .bkm-hero-panel, .bkm-footer, .bkm-cta-band,
+.bkm-card, .bkm-form, .bkm-field input, .bkm-field select, .bkm-field textarea {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 * { box-sizing: border-box; }
@@ -55,8 +74,8 @@ h1, h2, h3 {
 /* Soft radial glow backdrop, used behind the hero and section dividers */
 .bkm-blueprint-bg {
   background:
-    radial-gradient(600px circle at 15% 0%, rgba(79, 70, 229, 0.06), transparent 60%),
-    radial-gradient(500px circle at 100% 30%, rgba(79, 70, 229, 0.04), transparent 60%),
+    radial-gradient(700px circle at 15% 0%, rgba(79, 70, 229, 0.14), transparent 62%),
+    radial-gradient(600px circle at 100% 30%, rgba(79, 70, 229, 0.10), transparent 62%),
     var(--bkm-paper);
 }
 
@@ -142,6 +161,26 @@ h1, h2, h3 {
   transition: background 0.15s ease, color 0.15s ease;
 }
 .bkm-nav-cta:hover { background: var(--bkm-navy); color: var(--bkm-paper); }
+
+/* Dark mode toggle button */
+.bkm-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--bkm-line);
+  border-radius: var(--bkm-radius);
+  background: transparent;
+  color: var(--bkm-navy);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.bkm-theme-toggle:hover { border-color: var(--bkm-navy); }
+.bkm-theme-toggle svg { width: 18px; height: 18px; }
+.bkm-theme-toggle .bkm-icon-sun { display: none; }
+[data-theme="dark"] .bkm-theme-toggle .bkm-icon-sun { display: block; }
+[data-theme="dark"] .bkm-theme-toggle .bkm-icon-moon { display: none; }
 
 .bkm-nav-toggle {
   display: none;
