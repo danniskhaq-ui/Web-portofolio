@@ -49,14 +49,41 @@
 // Catatan: ini hanya demo di sisi browser (belum kirim ke server mana pun).
 // Sambungkan atribut action pada <form> ke layanan seperti Formspree/Getform,
 // atau ganti listener ini dengan fetch() ke endpoint/Vercel Serverless Function-mu.
+// Ganti kode demo lama di file .js Anda dengan kode di bawah ini:
 (function () {
   var form = document.getElementById('bkm-contact-form');
   var status = document.getElementById('bkm-form-status');
   if (!form || !status) return;
 
   form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    status.classList.add('is-visible');
-    form.reset();
+    e.preventDefault(); // Menghentikan pengiriman default halaman biasa
+    
+    var data = new FormData(form);
+    status.innerHTML = "Sedang mengirim pesan...";
+    status.className = "bkm-form-status"; // Reset class status
+    status.style.color = "orange";
+
+    fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(function(response) {
+      if (response.ok) {
+        status.innerHTML = "Terima kasih! Pesan Anda telah berhasil dikirim.";
+        status.style.color = "green";
+        status.classList.add('is-visible'); // Memunculkan teks status bawaan css template
+        form.reset(); // Mengosongkan form setelah sukses
+      } else {
+        status.innerHTML = "Ups! Terjadi kendala pengiriman ke Formspree.";
+        status.style.color = "red";
+        status.classList.add('is-visible');
+      }
+    }).catch(function(error) {
+      status.innerHTML = "Gagal mengirim, periksa koneksi internet Anda.";
+      status.style.color = "red";
+      status.classList.add('is-visible');
+    });
   });
 })();
