@@ -221,12 +221,20 @@ h1, h2, h3 {
 .bkm-hero-panel {
   background: var(--bkm-navy);
   color: var(--bkm-paper);
-  padding: 28px;
+  padding: 16px;
   border-radius: var(--bkm-radius);
   position: relative;
 }
 .bkm-hero-panel .bkm-eyebrow { color: var(--bkm-orange); }
 .bkm-hero-panel .bkm-eyebrow::before { background: var(--bkm-orange); }
+
+.bkm-profile-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: calc(var(--bkm-radius) + 4px);
+}
 
 .bkm-stat-list {
   list-style: none;
