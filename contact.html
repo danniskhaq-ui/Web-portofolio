@@ -77,7 +77,7 @@
 
         <div>
           <p class="bkm-eyebrow">Formulir Konsultasi</p>
-          <form class="bkm-form" id="bkm-contact-form" action="https://formspree.io/f/mvkpvpkb" method="POST" style="margin-top:14px;">
+          <form class="bkm-form" id="bkm-contact-form" style="margin-top:14px;">
             <div class="bkm-form-row">
               <div class="bkm-field">
                 <label for="bkm-name">Nama Lengkap</label>
@@ -98,6 +98,7 @@
                 <select id="bkm-service" name="service">
                   <option>Diskusi Proyek</option>
                   <option>Diskusi Tentang Pemrograman</option>
+                  <option></option>
                   <option>Lainnya</option>
                 </select>
               </div>
@@ -106,6 +107,8 @@
               <label for="bkm-message">Ceritakan Kebutuhanmu</label>
               <textarea id="bkm-message" name="message" required></textarea>
             </div>
+            <p class="bkm-form-note">
+              Catatan untuk developer: form ini belum terhubung ke backend apa pun. Untuk hosting statis di Vercel, sambungkan lewat layanan seperti Formspree, Getform, atau Vercel Serverless Function, lalu isi atribut <code>action</code> di tag &lt;form&gt;.
             </p>
             <button type="submit" class="bkm-btn bkm-btn-primary">Kirim Pesan</button>
             <p class="bkm-form-status is-success" id="bkm-form-status">Pesan tersimpan secara lokal (demo) — sambungkan form ke backend agar benar-benar terkirim.</p>
@@ -150,6 +153,7 @@
     </div>
   </footer>
 
+  <script src="js/cursor.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
