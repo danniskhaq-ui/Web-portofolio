@@ -788,3 +788,35 @@ a:focus-visible, button:focus-visible {
   outline: 2px solid var(--bkm-orange);
   outline-offset: 2px;
 }
+
+/* ==========================================================================
+   Custom code-style cursor — only on devices with a real mouse pointer
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+}
+
+.bkm-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: var(--bkm-font-mono);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--bkm-orange);
+  background: var(--bkm-paper);
+  border: 1px solid var(--bkm-line);
+  padding: 1px 6px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out, color 0.15s ease, background 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+.bkm-cursor.is-active {
+  color: var(--bkm-paper);
+  background: var(--bkm-orange);
+  transform: translate(-50%, -50%) scale(1.12);
+}
