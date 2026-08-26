@@ -270,7 +270,7 @@ h1, h2, h3 {
 .bkm-section:has(.bkm-gallery-grid),
 .bkm-section:has(.bkm-blog-grid),
 .bkm-section:has(.bkm-contact-grid),
-.bkm-section:has(.bkm-pyramid) {
+.bkm-section:has(.bkm-pyramid-layout) {
   background-image: radial-gradient(560px circle at 100% 0%, rgba(67, 56, 202, 0.06), transparent 65%);
   background-repeat: no-repeat;
   background-position: top right;
@@ -507,12 +507,18 @@ h1, h2, h3 {
 .bkm-team-card span { font-family: var(--bkm-font-mono); font-size: 12.5px; color: var(--bkm-orange-dim); }
 
 /* Tools & Teknologi — stepped skill pyramid, foundation at the base */
+.bkm-pyramid-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: center;
+  margin-top: 32px;
+}
 .bkm-pyramid {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  margin-top: 32px;
 }
 .bkm-pyramid-layer {
   display: flex;
@@ -522,6 +528,7 @@ h1, h2, h3 {
   padding: 16px 20px;
   border-radius: var(--bkm-radius);
   width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .bkm-pyramid-title {
   font-family: var(--bkm-font-mono);
@@ -553,6 +560,20 @@ h1, h2, h3 {
   max-width: 220px;
   background: var(--bkm-navy);
   color: var(--bkm-paper);
+}
+
+/* Hover: layers lift apart slightly, like they're breathing/separating */
+.bkm-pyramid:hover .bkm-pyramid-1 { transform: translateY(2px); }
+.bkm-pyramid:hover .bkm-pyramid-2 { transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 20px -12px rgba(67,56,202,0.4); }
+.bkm-pyramid:hover .bkm-pyramid-3 { transform: translateY(-8px) scale(1.04); box-shadow: 0 14px 24px -12px rgba(67,56,202,0.45); }
+.bkm-pyramid:hover .bkm-pyramid-4 { transform: translateY(-16px) scale(1.06); box-shadow: 0 18px 28px -12px rgba(30,37,48,0.5); }
+
+.bkm-pyramid-mascot {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 20px 30px rgba(30, 37, 48, 0.18));
 }
 
 /* ==========================================================================
@@ -807,6 +828,8 @@ h1, h2, h3 {
   .bkm-blog-featured { grid-template-columns: 1fr; }
   .bkm-contact-grid { grid-template-columns: 1fr; }
   .bkm-pyramid-layer { max-width: 100% !important; }
+  .bkm-pyramid-layout { grid-template-columns: 1fr; }
+  .bkm-pyramid-mascot { max-width: 220px; order: -1; }
 }
 
 @media (max-width: 680px) {
