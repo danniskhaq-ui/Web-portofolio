@@ -514,6 +514,8 @@ h1, h2, h3 {
   align-items: center;
   margin-top: 32px;
 }
+.bkm-pyramid { order: 1; }
+.bkm-pyramid-mascot { order: 2; }
 .bkm-pyramid {
   display: flex;
   flex-direction: column;
