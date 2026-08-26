@@ -270,7 +270,7 @@ h1, h2, h3 {
 .bkm-section:has(.bkm-gallery-grid),
 .bkm-section:has(.bkm-blog-grid),
 .bkm-section:has(.bkm-contact-grid),
-.bkm-section:has(.bkm-team-grid) {
+.bkm-section:has(.bkm-pyramid) {
   background-image: radial-gradient(560px circle at 100% 0%, rgba(67, 56, 202, 0.06), transparent 65%);
   background-repeat: no-repeat;
   background-position: top right;
@@ -313,8 +313,8 @@ h1, h2, h3 {
   background-image: repeating-linear-gradient(135deg, var(--bkm-line) 0 1px, transparent 1px 16px);
 }
 
-/* Very light blueprint grid behind the project list, echoing the hero's technical feel */
-.bkm-section:has(.bkm-project-list) {
+/* Very light blueprint grid behind the FAQ list, echoing the hero's technical feel */
+.bkm-section:has(.bkm-faq-list) {
   background-image:
     linear-gradient(var(--bkm-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--bkm-line) 1px, transparent 1px);
@@ -388,27 +388,38 @@ h1, h2, h3 {
 .bkm-step h3 { font-size: 17px; }
 .bkm-step p { color: var(--bkm-ink-soft); font-size: 14.5px; margin-top: 8px; }
 
-/* Projects */
-.bkm-project-list { display: grid; gap: 1px; background: var(--bkm-line); border: 1px solid var(--bkm-line); }
-.bkm-project-row {
-  background: var(--bkm-paper);
-  display: grid;
-  grid-template-columns: 120px 1fr auto;
-  gap: 24px;
+/* FAQ */
+.bkm-faq-list { max-width: 760px; }
+.bkm-faq-item {
+  border-bottom: 1px solid var(--bkm-line);
+  padding: 18px 0;
+}
+.bkm-faq-item summary {
+  font-family: var(--bkm-font-display);
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
   align-items: center;
-  padding: 22px 28px;
+  justify-content: space-between;
+  gap: 16px;
 }
-.bkm-project-row .bkm-project-year {
+.bkm-faq-item summary::-webkit-details-marker { display: none; }
+.bkm-faq-item summary::after {
+  content: "+";
+  flex: none;
   font-family: var(--bkm-font-mono);
+  font-size: 20px;
+  color: var(--bkm-orange);
+  transition: transform 0.2s ease;
+}
+.bkm-faq-item[open] summary::after { content: "\2212"; }
+.bkm-faq-item p {
   color: var(--bkm-ink-soft);
-  font-size: 14px;
-}
-.bkm-project-row h3 { font-size: 17px; }
-.bkm-project-row span.bkm-tag {
-  font-family: var(--bkm-font-mono);
-  font-size: 12px;
-  color: var(--bkm-steel);
-  text-transform: uppercase;
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 /* Testimonial */
@@ -494,6 +505,55 @@ h1, h2, h3 {
 }
 .bkm-team-card h3 { font-size: 16px; }
 .bkm-team-card span { font-family: var(--bkm-font-mono); font-size: 12.5px; color: var(--bkm-orange-dim); }
+
+/* Tools & Teknologi — stepped skill pyramid, foundation at the base */
+.bkm-pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 32px;
+}
+.bkm-pyramid-layer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 20px;
+  border-radius: var(--bkm-radius);
+  width: 100%;
+}
+.bkm-pyramid-title {
+  font-family: var(--bkm-font-mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.bkm-pyramid-skills { font-size: 13.5px; margin-top: 6px; opacity: 0.85; }
+
+.bkm-pyramid-1 {
+  max-width: 580px;
+  background: var(--bkm-paper-dim);
+  border: 1px solid var(--bkm-line);
+  color: var(--bkm-navy);
+}
+.bkm-pyramid-2 {
+  max-width: 450px;
+  background: rgba(67, 56, 202, 0.14);
+  border: 1px solid rgba(67, 56, 202, 0.3);
+  color: var(--bkm-navy);
+}
+.bkm-pyramid-3 {
+  max-width: 330px;
+  background: rgba(67, 56, 202, 0.55);
+  color: #fff;
+}
+.bkm-pyramid-4 {
+  max-width: 220px;
+  background: var(--bkm-navy);
+  color: var(--bkm-paper);
+}
 
 /* ==========================================================================
    Galeri
@@ -746,6 +806,7 @@ h1, h2, h3 {
   .bkm-blog-grid { grid-template-columns: 1fr 1fr; }
   .bkm-blog-featured { grid-template-columns: 1fr; }
   .bkm-contact-grid { grid-template-columns: 1fr; }
+  .bkm-pyramid-layer { max-width: 100% !important; }
 }
 
 @media (max-width: 680px) {
@@ -768,7 +829,7 @@ h1, h2, h3 {
     margin: 0 24px 20px;
   }
   .bkm-timeline { grid-template-columns: 1fr; }
-  .bkm-project-row { grid-template-columns: 1fr; gap: 8px; text-align: left; }
+  .bkm-faq-item summary { font-size: 15.5px; }
   .bkm-team-grid { grid-template-columns: 1fr; }
   .bkm-cta-band-inner { flex-direction: column; align-items: flex-start; }
   .bkm-footer-grid { grid-template-columns: 1fr; }
