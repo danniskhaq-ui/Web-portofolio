@@ -1,9 +1,9 @@
 backend:
   name: github
-  repo: danniskhaq-ui/Web-portofolio 
+  repo: danniskhaq-ui/Web-portofolio
   branch: main
   base_url: https://gateway.decapbridge.com
-  auth_endpoint: /auth
+  site_domain: web-portofolio-wildan.vercel.app
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
