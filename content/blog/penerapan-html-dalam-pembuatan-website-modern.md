@@ -9,8 +9,6 @@ description: Dalam era transformasi digital saat ini, memiliki halaman web yang
   (HyperText Markup Language) yang berfungsi sebagai bahasa standar untuk
   membangun pondasi dan struktur utama situs web.
 ---
-
-
 Dalam era transformasi digital saat ini, memiliki halaman web yang responsif dan terstruktur menjadi kebutuhan utama bagi setiap individu maupun pelaku bisnis. Di balik setiap halaman web yang menarik, terdapat HTML (*HyperText Markup Language*) yang berfungsi sebagai bahasa standar untuk membangun pondasi dan struktur utama situs web. HTML bertindak seperti kerangka tulang pada tubuh manusia; tanpa penulisan struktur yang tepat, sebuah halaman tidak akan dapat berdiri dengan kokoh atau menampilkan informasi dengan jelas. Namun, tidak sedikit pengembang pemula yang mengabaikan standar penulisan HTML, sehingga menghasilkan dokumen web yang sulit dibaca oleh mesin pencari (*Search Engine Optimization/SEO*) serta kurang ramah aksesibilitas. Oleh karena itu, memahami kaidah dan teknik penulisan dokumen HTML yang benar merupakan langkah krusial bagi siapa saja yang ingin terjun ke dunia pengembangan web.
 
 
