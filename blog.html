@@ -43,61 +43,11 @@
 
     <section class="bkm-section">
       <div class="bkm-container">
-
-        <article class="bkm-blog-featured">
-          <div class="bkm-gallery-placeholder">Gambar Artikel Utama</div>
-          <div>
-            <p class="bkm-blog-meta">Perencanaan &middot; 12 Juli 2026</p>
-            <h2>5 Hal yang Wajib Dicek Sebelum Tanda Tangan Kontrak Renovasi</h2>
-            <p>Dari kejelasan RAB sampai klausul garansi — berikut poin yang sering terlewat oleh pemilik rumah saat memilih kontraktor renovasi.</p>
-            <a href="#" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
-          </div>
-        </article>
-
-        <div class="bkm-blog-grid">
-          <article class="bkm-blog-card">
-            <div class="bkm-gallery-placeholder">Gambar Artikel</div>
-            <p class="bkm-blog-meta">Konstruksi &middot; 28 Juni 2026</p>
-            <h3>Memilih Material Atap yang Tahan Cuaca Tropis</h3>
-            <p>Perbandingan singkat genteng beton, metal, dan aspal untuk iklim Indonesia.</p>
-            <a href="#" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
-          </article>
-          <article class="bkm-blog-card">
-            <div class="bkm-gallery-placeholder">Gambar Artikel</div>
-            <p class="bkm-blog-meta">Anggaran &middot; 14 Juni 2026</p>
-            <h3>Cara Membaca RAB Supaya Tidak Ada Biaya Tersembunyi</h3>
-            <p>Panduan singkat memahami rincian anggaran biaya sebelum proyek dimulai.</p>
-            <a href="#" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
-          </article>
-          <article class="bkm-blog-card">
-            <div class="bkm-gallery-placeholder">Gambar Artikel</div>
-            <p class="bkm-blog-meta">Renovasi &middot; 30 Mei 2026</p>
-            <h3>Renovasi Bertahap vs Sekaligus: Mana yang Lebih Hemat?</h3>
-            <p>Pertimbangan waktu dan biaya sebelum memutuskan strategi renovasi rumah.</p>
-            <a href="#" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
-          </article>
-          <article class="bkm-blog-card">
-            <div class="bkm-gallery-placeholder">Gambar Artikel</div>
-            <p class="bkm-blog-meta">Perizinan &middot; 18 Mei 2026</p>
-            <h3>Dokumen yang Perlu Disiapkan Sebelum Mengurus PBG</h3>
-            <p>Ringkasan syarat administratif untuk Persetujuan Bangunan Gedung.</p>
-            <a href="#" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
-          </article>
-          <article class="bkm-blog-card">
-            <div class="bkm-gallery-placeholder">Gambar Artikel</div>
-            <p class="bkm-blog-meta">Konstruksi &middot; 2 Mei 2026</p>
-            <h3>Pondasi yang Tepat untuk Tanah Berkontur</h3>
-            <p>Opsi pondasi yang umum dipakai untuk lahan miring atau tidak rata.</p>
-            <a href="#" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
-          </article>
-          <article class="bkm-blog-card">
-            <div class="bkm-gallery-placeholder">Gambar Artikel</div>
-            <p class="bkm-blog-meta">Perencanaan &middot; 19 April 2026</p>
-            <h3>Timeline Realistis untuk Proyek Rumah 2 Lantai</h3>
-            <p>Estimasi durasi tiap tahap, dari perizinan sampai serah terima.</p>
-            <a href="#" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
-          </article>
-        </div>
+        <section class="bkm-section">
+  <div class="bkm-container bkm-blog-grid" id="blog-container">
+    
+  </div>
+</section>
       </div>
     </section>
 
@@ -148,35 +98,48 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <!-- CDN Marked.js untuk mengubah teks Markdown menjadi HTML -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   async function loadCMSPosts() {
     const repo = "danniskhaq-ui/Web-portofolio";
     const container = document.getElementById("blog-container");
 
     try {
-      // 1. Ambil daftar file dari folder content/blog di GitHub API
       const response = await fetch(`https://api.github.com/repos/${repo}/contents/content/blog`);
       const files = await response.json();
 
       if (!Array.isArray(files)) return;
 
-      container.innerHTML = ""; // Hapus artikel dummy statis
+      container.innerHTML = "";
 
       for (const file of files) {
         if (file.name.endsWith(".md")) {
-          // 2. Baca isi setiap file markdown
-          const contentRes = await fetch(file.download_url);
-          const rawText = await contentRes.text();
+          const res = await fetch(file.download_url);
+          const rawText = await res.text();
 
-          // 3. Pisahkan YAML frontmatter (metadata) dan isi artikel
           const parts = rawText.split("---");
-          const bodyMarkdown = parts.slice(2).join("---");
+          const metadata = parts[1] || "";
 
-          // 4. Render elemen artikel ke halaman
+          const titleMatch = metadata.match(/title:\s*["']?(.*?)["']?\n/);
+          const categoryMatch = metadata.match(/category:\s*["']?(.*?)["']?\n/);
+          const dateMatch = metadata.match(/date:\s*["']?(.*?)["']?\n/);
+          const descMatch = metadata.match(/description:\s*["']?(.*?)["']?\n/);
+
+          const title = titleMatch ? titleMatch[1] : "Artikel Tanpa Judul";
+          const category = categoryMatch ? categoryMatch[1] : "Blog";
+          const date = dateMatch ? new Date(dateMatch[1]).toLocaleDateString("id-ID", { day: 'numeric', month: 'long', year: 'numeric' }) : "";
+          const description = descMatch ? descMatch[1] : "";
+
           const article = document.createElement("article");
-          article.className = "blog-card";
-          article.innerHTML = marked.parse(bodyMarkdown);
+          article.className = "bkm-blog-card";
+          article.innerHTML = `
+            <div class="bkm-gallery-placeholder">Gambar Artikel</div>
+            <p class="bkm-blog-meta">${category} &middot; ${date}</p>
+            <h3>${title}</h3>
+            <p>${description}</p>
+            <a href="#" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
+          `;
+
           container.appendChild(article);
         }
       }
