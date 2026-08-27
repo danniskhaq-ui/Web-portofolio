@@ -145,5 +145,43 @@
 
   <script src="js/cursor.js"></script>
   <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  async function loadBlogPosts() {
+    const repo = "danniskhaq-ui/Web-portofolio"; // Sesuaikan repo Anda
+    const blogContainer = document.getElementById("blog-container"); // Sesuaikan ID elemen wrapper blog Anda
+
+    try {
+      // 1. Ambil daftar file dari folder content/blog di GitHub
+      const res = await fetch(`https://api.github.com/repos/${repo}/contents/content/blog`);
+      const files = await res.json();
+
+      blogContainer.innerHTML = ""; // Bersihkan konten dummy statis
+
+      // 2. Loop setiap file artikel
+      for (const file of files) {
+        if (file.name.endsWith(".md")) {
+          const contentRes = await fetch(file.download_url);
+          const rawText = await contentRes.text();
+
+          // Memisahkan frontmatter (data header YAML) dari isi markdown
+          const parts = rawText.split("---");
+          const bodyMarkdown = parts.slice(2).join("---");
+
+          // Render HTML dari Markdown
+          const postElement = document.createElement("article");
+          postElement.className = "blog-card";
+          postElement.innerHTML = marked.parse(bodyMarkdown);
+          
+          blogContainer.appendChild(postElement);
+        }
+      }
+    } catch (error) {
+      console.error("Gagal memuat artikel blog:", error);
+    }
+  }
+
+  loadBlogPosts();
+</script>
 </body>
 </html>
