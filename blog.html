@@ -99,6 +99,7 @@
   <!-- CDN Marked.js untuk mengubah teks Markdown menjadi HTML -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   async function loadCMSPosts() {
     const repo = "danniskhaq-ui/Web-portofolio";
@@ -120,24 +121,34 @@
           const parts = rawText.split("---");
           const metadata = parts[1] || "";
 
+          // Regex untuk mengambil data dari metadata (Frontmatter)
           const titleMatch = metadata.match(/title:\s*["']?(.*?)["']?\n/);
           const categoryMatch = metadata.match(/category:\s*["']?(.*?)["']?\n/);
           const dateMatch = metadata.match(/date:\s*["']?(.*?)["']?\n/);
           const descMatch = metadata.match(/description:\s*["']?(.*?)["']?\n/);
+          const thumbMatch = metadata.match(/thumbnail:\s*["']?(.*?)["']?\n/);
 
           const title = titleMatch ? titleMatch[1] : "Artikel Tanpa Judul";
           const category = categoryMatch ? categoryMatch[1] : "Blog";
           const date = dateMatch ? new Date(dateMatch[1]).toLocaleDateString("id-ID", { day: 'numeric', month: 'long', year: 'numeric' }) : "";
           const description = descMatch ? descMatch[1] : "";
+          
+          // Mengambil URL gambar jika ada
+          const thumbnail = thumbMatch ? thumbMatch[1] : "";
+
+          // Tampilan gambar: gunakan <img> jika ada gambar, jika tidak tampilkan placeholder
+          const imageHTML = thumbnail 
+            ? `<img src="${thumbnail}" alt="${title}" style="width:100%; height:200px; object-fit:cover; border-radius:8px;">`
+            : `<div class="bkm-gallery-placeholder">Gambar Artikel</div>`;
 
           const article = document.createElement("article");
           article.className = "bkm-blog-card";
           article.innerHTML = `
-            <div class="bkm-gallery-placeholder">Gambar Artikel</div>
+            ${imageHTML}
             <p class="bkm-blog-meta">${category} &middot; ${date}</p>
             <h3>${title}</h3>
             <p>${description}</p>
-            <a href="#" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
+            <a href="post.html?file=${encodeURIComponent(file.name)}" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
           `;
 
           container.appendChild(article);
