@@ -1,7 +1,9 @@
 backend:
   name: github
-  repo: username-github-mu/nama-repo-mu # Ganti dengan username & nama repo Anda
-  branch: main # Ganti jika nama branch utama Anda bukan main
+  repo: danniskhaq-ui/Web-portofolio 
+  branch: main
+  base_url: https://gateway.decapbridge.com
+  auth_endpoint: /auth
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
