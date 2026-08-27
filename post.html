@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Artikel</title>
+  <link rel="stylesheet" href="style.css"> <!-- Sesuaikan dengan file CSS Anda -->
+</head>
+<body>
+  <main class="bkm-container" style="padding: 40px 20px; max-width: 800px; margin: auto;">
+    <a href="blog.html" style="text-decoration:none;">&larr; Kembali ke Blog</a>
+    <article id="post-content" style="margin-top: 20px;">
+      <p>Memuat artikel...</p>
+    </article>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    async function loadSinglePost() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const fileName = urlParams.get('file');
+      const container = document.getElementById("post-content");
+
+      if (!fileName) {
+        container.innerHTML = "<h2>Artikel tidak ditemukan.</h2>";
+        return;
+      }
+
+      const repo = "danniskhaq-ui/Web-portofolio";
+      const fileUrl = `https://raw.githubusercontent.com/${repo}/main/content/blog/${fileName}`;
+
+      try {
+        const res = await fetch(fileUrl);
+        const rawText = await res.text();
+
+        const parts = rawText.split("---");
+        const metadata = parts[1] || "";
+        const markdownBody = parts.slice(2).join("---");
+
+        const titleMatch = metadata.match(/title:\s*["']?(.*?)["']?\n/);
+        const title = titleMatch ? titleMatch[1] : "Artikel Blog";
+
+        container.innerHTML = `
+          <h1>${title}</h1>
+          <hr style="margin: 20px 0; opacity: 0.2;">
+          <div>${marked.parse(markdownBody)}</div>
+        `;
+      } catch (err) {
+        container.innerHTML = "<h2>Gagal memuat artikel.</h2>";
+      }
+    }
+
+    loadSinglePost();
+  </script>
+</body>
+</html>
