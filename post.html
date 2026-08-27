@@ -31,31 +31,28 @@
       const res = await fetch(fileUrl);
       const rawText = await res.text();
 
+      // Pisahkan Frontmatter YAML (metadata) dengan isi artikel asli
       const parts = rawText.split("---");
       const metadata = parts[1] || "";
+      // Mengambil HANYA bagian body (isi artikel asli setelah delimiter '---')
       const markdownBody = parts.slice(2).join("---");
 
-      // Extract metadata dari Frontmatter YAML
       const titleMatch = metadata.match(/title:\s*["']?(.*?)["']?\n/);
       const thumbMatch = metadata.match(/thumbnail:\s*["']?(.*?)["']?\n/);
 
       const title = titleMatch ? titleMatch[1] : "Artikel Blog";
       const thumbnail = thumbMatch ? thumbMatch[1] : "";
 
-      // Siapkan elemen gambar jika thumbnail ada
       const imageHTML = thumbnail 
         ? `<img src="${thumbnail}" alt="${title}" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px; margin-bottom: 24px;">`
         : "";
 
-      // Render Gambar, Judul, dan Isi Artikel
       container.innerHTML = `
         ${imageHTML}
         <h1 style="margin-bottom: 16px;">${title}</h1>
         <hr style="margin: 20px 0; opacity: 0.2;">
-        <div style="line-height: 1.8; font-size: 1.05rem;">
-  ${marked.parse(markdownBody)}
-        </div>
-          ${marked.parse(markdownBody)}
+        <div class="post-body" style="line-height: 1.8; font-size: 1.05rem;">
+          ${marked.parse(markdownBody.trim())}
         </div>
       `;
     } catch (err) {
