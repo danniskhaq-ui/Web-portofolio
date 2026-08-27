@@ -906,3 +906,13 @@ a:focus-visible, button:focus-visible {
   background: var(--bkm-orange);
   transform: translate(-50%, -50%) scale(1.12);
 }
+/* Berikan spasi bawah 20px pada setiap paragraf artikel */
+.post-body p {
+  margin-bottom: 20px;
+}
+
+/* Opsional: Berikan spasi jika ada sub-judul (heading) di dalam artikel */
+.post-body h2, .post-body h3 {
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
