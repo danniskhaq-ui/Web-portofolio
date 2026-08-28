@@ -102,64 +102,78 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   async function loadCMSPosts() {
-    const repo = "danniskhaq-ui/Web-portofolio";
-    const container = document.getElementById("blog-container");
+  const repo = "danniskhaq-ui/Web-portofolio";
+  const container = document.getElementById("blog-container");
 
-    try {
-      const response = await fetch(`https://api.github.com/repos/${repo}/contents/content/blog`);
-      const files = await response.json();
+  try {
+    const response = await fetch(`https://api.github.com/repos/${repo}/contents/content/blog`);
+    const files = await response.json();
 
-      if (!Array.isArray(files)) return;
+    if (!Array.isArray(files)) return;
 
-      container.innerHTML = "";
+    container.innerHTML = "";
 
-      for (const file of files) {
-        if (file.name.endsWith(".md")) {
-          const res = await fetch(file.download_url);
-          const rawText = await res.text();
+    // 1. Ambil dan kumpulkan semua data artikel terlebih dahulu
+    const posts = [];
 
-          const parts = rawText.split("---");
-          const metadata = parts[1] || "";
+    for (const file of files) {
+      if (file.name.endsWith(".md")) {
+        const res = await fetch(file.download_url);
+        const rawText = await res.text();
 
-          // Regex untuk mengambil data dari metadata (Frontmatter)
-          const titleMatch = metadata.match(/title:\s*["']?(.*?)["']?\n/);
-          const categoryMatch = metadata.match(/category:\s*["']?(.*?)["']?\n/);
-          const dateMatch = metadata.match(/date:\s*["']?(.*?)["']?\n/);
-          const descMatch = metadata.match(/description:\s*["']?(.*?)["']?\n/);
-          const thumbMatch = metadata.match(/thumbnail:\s*["']?(.*?)["']?\n/);
+        const parts = rawText.split("---");
+        const metadata = parts[1] || "";
 
-          const title = titleMatch ? titleMatch[1] : "Artikel Tanpa Judul";
-          const category = categoryMatch ? categoryMatch[1] : "Blog";
-          const date = dateMatch ? new Date(dateMatch[1]).toLocaleDateString("id-ID", { day: 'numeric', month: 'long', year: 'numeric' }) : "";
-          const description = descMatch ? descMatch[1] : "";
-          
-          // Mengambil URL gambar jika ada
-          const thumbnail = thumbMatch ? thumbMatch[1] : "";
+        const titleMatch = metadata.match(/title:\s*["']?(.*?)["']?\n/);
+        const categoryMatch = metadata.match(/category:\s*["']?(.*?)["']?\n/);
+        const dateMatch = metadata.match(/date:\s*["']?(.*?)["']?\n/);
+        const descMatch = metadata.match(/description:\s*["']?(.*?)["']?\n/);
+        const thumbMatch = metadata.match(/thumbnail:\s*["']?(.*?)["']?\n/);
 
-          // Tampilan gambar: gunakan <img> jika ada gambar, jika tidak tampilkan placeholder
-          const imageHTML = thumbnail 
-            ? `<img src="${thumbnail}" alt="${title}" style="width:100%; height:200px; object-fit:cover; border-radius:8px;">`
-            : `<div class="bkm-gallery-placeholder">Gambar Artikel</div>`;
-
-          const article = document.createElement("article");
-          article.className = "bkm-blog-card";
-          article.innerHTML = `
-            ${imageHTML}
-            <p class="bkm-blog-meta">${category} &middot; ${date}</p>
-            <h3>${title}</h3>
-            <p>${description}</p>
-            <a href="post.html?file=${encodeURIComponent(file.name)}" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
-          `;
-
-          container.appendChild(article);
-        }
+        posts.push({
+          fileName: file.name,
+          title: titleMatch ? titleMatch[1] : "Artikel Tanpa Judul",
+          category: categoryMatch ? categoryMatch[1] : "Blog",
+          rawDate: dateMatch ? dateMatch[1] : null,
+          dateObj: dateMatch ? new Date(dateMatch[1]) : new Date(0), // Untuk pengurutan
+          description: descMatch ? descMatch[1] : "",
+          thumbnail: thumbMatch ? thumbMatch[1] : ""
+        });
       }
-    } catch (err) {
-      console.error("Gagal mengambil data blog:", err);
     }
-  }
 
-  loadCMSPosts();
+    // 2. URUTKAN: Dari tanggal terbaru ke tanggal terlama (Descending)
+    posts.sort((a, b) => b.dateObj - a.dateObj);
+
+    // 3. Render artikel ke halaman web setelah diurutkan
+    posts.forEach(post => {
+      const formattedDate = post.rawDate 
+        ? new Date(post.rawDate).toLocaleDateString("id-ID", { day: 'numeric', month: 'long', year: 'numeric' })
+        : "";
+
+      const imageHTML = post.thumbnail 
+        ? `<img src="${post.thumbnail}" alt="${post.title}" style="width:100%; height:200px; object-fit:cover; border-radius:8px;">`
+        : `<div class="bkm-gallery-placeholder">Gambar Artikel</div>`;
+
+      const article = document.createElement("article");
+      article.className = "bkm-blog-card";
+      article.innerHTML = `
+        ${imageHTML}
+        <p class="bkm-blog-meta">${post.category} &middot; ${formattedDate}</p>
+        <h3>${post.title}</h3>
+        <p>${post.description}</p>
+        <a href="post.html?file=${encodeURIComponent(post.fileName)}" class="bkm-blog-link">Baca Selengkapnya &rarr;</a>
+      `;
+
+      container.appendChild(article);
+    });
+
+  } catch (err) {
+    console.error("Gagal mengambil data blog:", err);
+  }
+}
+
+loadCMSPosts();
 </script>
 </body>
 </html>
