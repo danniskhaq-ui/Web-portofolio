@@ -711,7 +711,7 @@ h1, h2, h3 {
 .bkm-info-list h3 { font-size: 15px; }
 .bkm-info-list p { margin: 4px 0 0; color: var(--bkm-ink-soft); font-size: 14.5px; }
 
-.bkm-map-placeholder {
+.bkm-map {
   margin-top: 28px;
   aspect-ratio: 16/9;
   background: var(--bkm-paper-dim);
