@@ -70,10 +70,9 @@
             </li>
             <li>
 
-         <div class="bkm-map">
+        <div class="bkm-map">
   <div class="map-container">
     <iframe 
-      class="gmap_iframe" 
       src="https://www.google.com/maps?q=Wonosirno&amp;z=16&amp;t=h&amp;hl=en&amp;output=embed" 
       loading="lazy" 
       referrerpolicy="no-referrer-when-downgrade">
@@ -84,14 +83,22 @@
 <style>
   .map-container {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: 400px; /* Tinggi standar desktop */
+    max-height: 60vh;
+    border-radius: 8px;
     overflow: hidden;
-    border-radius: 8px; /* Opsional: memberi sudut tumpul pada peta */
   }
+
   .map-container iframe {
     width: 100%;
     height: 100%;
     border: 0;
+  }
+
+  @media (max-width: 768px) {
+    .map-container {
+      height: 300px;
+    }
   }
 </style>
 
