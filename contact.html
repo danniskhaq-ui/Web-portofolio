@@ -70,10 +70,30 @@
             </li>
             <li>
 
-          <div class="bkm-map">
-      <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="600" height="400" src="https://www.google.com/maps?q=Wonosirno&amp;z=16&amp;t=h&amp;hl=en&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.24meteo.com/">Weather Report</a></div><style>.mapouter{position:relative;text-align:right;width:600px;height:400px}.gmap_canvas{overflow:hidden;background:none!important;width:600px;height:400px}.gmap_iframe{width:600px!important;height:400px!important}</style></div>
-          </div>
-        </div>
+         <div class="bkm-map">
+  <div class="map-container">
+    <iframe 
+      class="gmap_iframe" 
+      src="https://www.google.com/maps?q=Wonosirno&amp;z=16&amp;t=h&amp;hl=en&amp;output=embed" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<style>
+  .map-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px; /* Opsional: memberi sudut tumpul pada peta */
+  }
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
 
         <div>
           <p class="bkm-eyebrow">Formulir Konsultasi</p>
