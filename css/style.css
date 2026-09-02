@@ -902,6 +902,28 @@ h1, h2, h3 {
 }
 .bkm-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 14px; }
 .bkm-footer a:hover { color: var(--bkm-orange); }
+.bkm-social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+.bkm-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--bkm-radius);
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.bkm-social-icon svg { width: 18px; height: 18px; }
+.bkm-social-icon:hover {
+  color: var(--bkm-orange);
+  border-color: var(--bkm-orange);
+  transform: translateY(-2px);
+}
 .bkm-footer-bottom {
   padding-top: 22px;
   display: flex;
