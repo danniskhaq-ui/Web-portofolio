@@ -1,5 +1,5 @@
 ---
-title: "Jejak Langkah Pertama Coding: Dari Mesin Tenun Hingga Bahasa Komputer Modern"
+title: "Sejarah Pertama Coding: Dari Mesin Tenun Hingga Bahasa Komputer Modern"
 category: PEMROGRAMAN
 date: 2026-09-02T08:10:00.000+07:00
 thumbnail: /images/uploads/istockphoto-2242004765-612x612.jpg
