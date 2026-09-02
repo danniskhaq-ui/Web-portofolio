@@ -9,6 +9,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .bkm-tools-icons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      width: 100%;
+      max-width: 360px;
+    }
+    .bkm-tool-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 10px;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 14px;
+      background: rgba(0,0,0,0.02);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .bkm-tool-icon:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      background: rgba(0,0,0,0.04);
+    }
+    .bkm-tool-icon img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+    .bkm-tool-icon span {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--bkm-ink-soft, #555);
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .bkm-tools-icons { max-width: 100%; }
+    }
+  </style>
 </head>
 <body data-theme="modern">
 
@@ -96,7 +135,32 @@
               <span class="bkm-pyramid-skills">HTML5 &middot; CSS3</span>
             </div>
           </div>
-          <img src="images/mascot-coding.png" alt="Ilustrasi maskot bertema coding" class="bkm-pyramid-mascot" />
+          <div class="bkm-tools-icons">
+            <div class="bkm-tool-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+              <span>HTML5</span>
+            </div>
+            <div class="bkm-tool-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+              <span>CSS3</span>
+            </div>
+            <div class="bkm-tool-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+              <span>JavaScript</span>
+            </div>
+            <div class="bkm-tool-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" />
+              <span>PHP</span>
+            </div>
+            <div class="bkm-tool-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+              <span>MySQL</span>
+            </div>
+            <div class="bkm-tool-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+              <span>Git</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
