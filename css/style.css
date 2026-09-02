@@ -578,6 +578,45 @@ h1, h2, h3 {
   filter: drop-shadow(0 20px 30px rgba(30, 37, 48, 0.18));
 }
 
+/* Tools icon grid — replaces the mascot, echoes the pyramid's card treatment */
+.bkm-tools-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+.bkm-tool-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 12px;
+  background: var(--bkm-paper);
+  border: 1px solid var(--bkm-line);
+  border-radius: var(--bkm-radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.bkm-tool-icon:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 24px -12px rgba(67, 56, 202, 0.35);
+  border-color: rgba(67, 56, 202, 0.3);
+}
+.bkm-tool-icon img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+.bkm-tool-icon span {
+  font-family: var(--bkm-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--bkm-ink-soft);
+  text-align: center;
+}
+
 /* ==========================================================================
    Galeri
    ========================================================================== */
@@ -891,6 +930,7 @@ h1, h2, h3 {
   .bkm-pyramid-layer { max-width: 100% !important; }
   .bkm-pyramid-layout { grid-template-columns: 1fr; }
   .bkm-pyramid-mascot { max-width: 220px; order: -1; }
+  .bkm-tools-icons { max-width: 260px; order: -1; }
 }
 
 @media (max-width: 680px) {
