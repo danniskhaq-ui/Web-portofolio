@@ -9,6 +9,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .bkm-role-line{
+      display:flex;
+      align-items:center;
+      gap:2px;
+      margin-top:14px;
+      font-family: var(--bkm-font-mono, 'IBM Plex Mono', monospace);
+      font-size:clamp(15px,1.6vw,17px);
+      color: var(--bkm-orange-dim, #3730a3);
+    }
+    .bkm-role-line .bkm-role-caret{
+      display:inline-block;
+      width:2px;
+      height:1.1em;
+      background: currentColor;
+      animation: bkmCaretBlink 0.9s steps(1) infinite;
+    }
+    @keyframes bkmCaretBlink{ 50%{ opacity:0; } }
+  </style>
 </head>
 <body data-theme="modern">
 
@@ -38,6 +57,7 @@
       <div class="bkm-container">
         <p class="bkm-eyebrow">Tentang Saya</p>
         <h1 style="font-size:clamp(2rem,4vw,2.8rem);max-width:20ch;margin-top:14px;">Saya adalah seorang pelajar jurusan Pengembangan Perangkat Lunak dan Gim (PPLG).</h1>
+        <div class="bkm-role-line"><span id="bkmRoleText"></span><span class="bkm-role-caret"></span></div>
         <p style="max-width:60ch;color:var(--bkm-ink-soft);margin-top:18px;font-size:16.5px;"> Saya memiliki fokus dan ketertarikan mendalam di bidang Web Development. Saya senang membangun halaman web yang fungsional, responsif, dan terstruktur dengan memanfaatkan teknologi database seperti MySQL.</p>
       </div>
     </section>
@@ -185,5 +205,52 @@
 
   <script src="js/cursor.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    (function () {
+      const roles = [
+        'Pelajar & Web Developer Pemula',
+        'Penggemar Teknologi',
+        'Frontend Learner',
+        'Siswa SMK/SMA Rekayasa Perangkat Lunak'
+      ];
+
+      const el = document.getElementById('bkmRoleText');
+      if (!el) return;
+
+      let roleIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      const TYPE_SPEED = 70;
+      const DELETE_SPEED = 35;
+      const HOLD_TIME = 1400;
+      const GAP_TIME = 300;
+
+      function tick() {
+        const current = roles[roleIndex];
+
+        if (!deleting) {
+          charIndex++;
+          el.textContent = current.slice(0, charIndex);
+          if (charIndex === current.length) {
+            deleting = true;
+            return setTimeout(tick, HOLD_TIME);
+          }
+          return setTimeout(tick, TYPE_SPEED);
+        }
+
+        charIndex--;
+        el.textContent = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+          return setTimeout(tick, GAP_TIME);
+        }
+        return setTimeout(tick, DELETE_SPEED);
+      }
+
+      tick();
+    })();
+  </script>
 </body>
 </html>
