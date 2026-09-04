@@ -133,8 +133,22 @@ h1, h2, h3 {
   padding: 4px 0;
   color: var(--bkm-navy);
 }
+.bkm-nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--bkm-orange-dim);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
 .bkm-nav-links a:hover { color: var(--bkm-orange-dim); }
+.bkm-nav-links a:hover::after { transform: scaleX(1); }
 .bkm-nav-links a.is-active { color: var(--bkm-orange-dim); }
+.bkm-nav-links a.is-active::after { transform: scaleX(1); }
 
 .bkm-nav-cta {
   font-family: var(--bkm-font-mono);
