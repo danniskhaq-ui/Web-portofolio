@@ -373,12 +373,11 @@ h1, h2, h3 {
 #keahlian .bkm-card {
   border: 1px solid var(--bkm-line);
   border-radius: var(--bkm-radius);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 #keahlian .bkm-card:hover {
   border-color: var(--bkm-orange);
   box-shadow: 0 0 0 1px var(--bkm-orange), 0 0 28px rgba(67, 56, 202, 0.35), 0 18px 40px -20px rgba(67, 56, 202, 0.5);
-  transform: translateY(-4px);
 }
 
 /* Process timeline (numbered — order is meaningful here) */
