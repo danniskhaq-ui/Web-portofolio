@@ -453,6 +453,61 @@ h1, h2, h3 {
 }
 
 /* Testimonial */
+/* ==========================================================================
+   Klien Marquee (auto-scroll)
+   ========================================================================== */
+.bkm-clients { padding-bottom: 8px; overflow: hidden; }
+
+.bkm-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 8px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+}
+
+.bkm-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: max-content;
+  animation: bkm-marquee-scroll 22s linear infinite;
+}
+
+.bkm-marquee:hover .bkm-marquee-track {
+  animation-play-state: paused;
+}
+
+.bkm-marquee-item {
+  flex: 0 0 auto;
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.bkm-marquee-item img {
+  height: 100%;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.55);
+  transition: filter 0.2s ease;
+}
+
+.bkm-marquee-item img:hover {
+  filter: grayscale(0) opacity(1);
+}
+
+@keyframes bkm-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bkm-marquee-track { animation: none; }
+}
+
 .bkm-quote {
   max-width: 720px;
   font-family: var(--bkm-font-display);
