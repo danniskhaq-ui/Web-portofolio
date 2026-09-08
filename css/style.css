@@ -457,7 +457,7 @@ h1, h2, h3 {
    Klien Marquee (auto-scroll, edge-to-edge)
    ========================================================================== */
 .bkm-clients {
-  background: #b9bcc2;
+  background: var(--bkm-orange);
   padding: 40px 0 44px;
   overflow: hidden;
   width: 100%;
@@ -468,7 +468,7 @@ h1, h2, h3 {
   font-family: var(--bkm-font-display);
   font-size: clamp(1.6rem, 3vw, 2.1rem);
   font-weight: 600;
-  color: #2b2f36;
+  color: #ffffff;
   margin: 0 0 28px;
 }
 
