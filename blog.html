@@ -177,6 +177,7 @@
 
       const article = document.createElement("article");
       article.className = "bkm-blog-card";
+      article.dataset.category = post.category.trim().toUpperCase();
       article.innerHTML = `
         ${imageHTML}
         <p class="bkm-blog-meta">${post.category} &middot; ${formattedDate}</p>
@@ -188,9 +189,30 @@
       container.appendChild(article);
     });
 
+    initCategoryFilter();
+
   } catch (err) {
     console.error("Gagal mengambil data blog:", err);
   }
+}
+
+function initCategoryFilter() {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll("#blog-container .bkm-blog-card");
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter.trim().toUpperCase();
+
+      cards.forEach(card => {
+        const matches = filter === "ALL" || filter === "SEMUA" || card.dataset.category === filter;
+        card.classList.toggle("is-hidden", !matches);
+      });
+    });
+  });
 }
 
 loadCMSPosts();
