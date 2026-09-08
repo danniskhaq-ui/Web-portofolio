@@ -454,25 +454,36 @@ h1, h2, h3 {
 
 /* Testimonial */
 /* ==========================================================================
-   Klien Marquee (auto-scroll)
+   Klien Marquee (auto-scroll, edge-to-edge)
    ========================================================================== */
-.bkm-clients { padding-bottom: 8px; overflow: hidden; }
+.bkm-clients {
+  background: #b9bcc2;
+  padding: 40px 0 44px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.bkm-clients-title {
+  text-align: center;
+  font-family: var(--bkm-font-display);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 600;
+  color: #2b2f36;
+  margin: 0 0 28px;
+}
 
 .bkm-marquee {
   position: relative;
   width: 100%;
   overflow: hidden;
-  margin-top: 8px;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
 }
 
 .bkm-marquee-track {
   display: flex;
-  align-items: center;
-  gap: 64px;
+  align-items: stretch;
+  gap: 0;
   width: max-content;
-  animation: bkm-marquee-scroll 22s linear infinite;
+  animation: bkm-marquee-scroll 26s linear infinite;
 }
 
 .bkm-marquee:hover .bkm-marquee-track {
@@ -481,22 +492,21 @@ h1, h2, h3 {
 
 .bkm-marquee-item {
   flex: 0 0 auto;
-  height: 44px;
+  width: 190px;
+  height: 130px;
+  background: #ffffff;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
 .bkm-marquee-item img {
-  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
   width: auto;
-  max-width: 140px;
+  height: auto;
   object-fit: contain;
-  filter: grayscale(1) opacity(0.55);
-  transition: filter 0.2s ease;
-}
-
-.bkm-marquee-item img:hover {
-  filter: grayscale(0) opacity(1);
 }
 
 @keyframes bkm-marquee-scroll {
@@ -506,6 +516,10 @@ h1, h2, h3 {
 
 @media (prefers-reduced-motion: reduce) {
   .bkm-marquee-track { animation: none; }
+}
+
+@media (max-width: 640px) {
+  .bkm-marquee-item { width: 140px; height: 100px; padding: 14px; }
 }
 
 .bkm-quote {
