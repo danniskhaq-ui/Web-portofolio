@@ -824,6 +824,96 @@ h1, h2, h3 {
 }
 .bkm-blog-card .bkm-blog-link:hover { color: var(--bkm-orange-dim); }
 
+/* Kategori filter — pill buttons above the blog grid */
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.filter-btn {
+  font-family: var(--bkm-font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 20px;
+  border: 1px solid var(--bkm-line);
+  border-radius: 999px;
+  background: var(--bkm-paper);
+  color: var(--bkm-ink-soft);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+/* Fill sweep — indigo gradient slides in from the left on hover/active */
+.filter-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(135deg, #6366f1, var(--bkm-orange) 55%, var(--bkm-orange-dim));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Soft glow pulse that rides behind the sweep on hover */
+.filter-btn::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  z-index: -3;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.45), transparent 65%);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.filter-btn:hover {
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-3px) scale(1.045);
+  box-shadow: 0 14px 28px -12px rgba(67, 56, 202, 0.55);
+}
+.filter-btn:hover::before {
+  transform: scaleX(1);
+}
+.filter-btn:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.filter-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+.filter-btn.active {
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -10px rgba(67, 56, 202, 0.6);
+  animation: bkmFilterPop 0.35s ease;
+}
+.filter-btn.active::before {
+  transform: scaleX(1);
+}
+.filter-btn:focus-visible {
+  outline: 2px solid var(--bkm-orange);
+  outline-offset: 2px;
+}
+@keyframes bkmFilterPop {
+  0% { transform: translateY(-1px) scale(0.94); }
+  60% { transform: translateY(-1px) scale(1.06); }
+  100% { transform: translateY(-1px) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .filter-btn.active { animation: none; }
+}
+
+/* Hide blog cards filtered out by category */
+.bkm-blog-card.is-hidden {
+  display: none;
+}
+
 /* ==========================================================================
    Kontak
    ========================================================================== */
