@@ -1,5 +1,8 @@
- // Variable global untuk menyimpan semua data artikel
+// Variable global untuk menyimpan semua data artikel
 let allPosts = [];
+let filteredPosts = []; // Menyimpan data artikel setelah difilter
+let currentPage = 1;
+const itemsPerPage = 9; // Maksimal 9 artikel per halaman
 
 async function loadCMSPosts() {
   const repo = "danniskhaq-ui/Web-portofolio";
@@ -42,18 +45,36 @@ async function loadCMSPosts() {
 
     // Urutkan artikel dari yang terbaru
     allPosts.sort((a, b) => b.dateObj - a.dateObj);
+    
+    // Inisialisasi awal filteredPosts dengan semua artikel
+    filteredPosts = [...allPosts];
 
-    // Tampilkan semua artikel pertama kali
-    renderArticles(allPosts);
+    // Tampilkan artikel & render tombol pagination
+    renderBlogPage();
 
   } catch (err) {
     console.error("Gagal mengambil data blog:", err);
   }
 }
 
-// Fungsi Render Artikel
+// Fungsi utama merender artikel sesuai halaman aktif
+function renderBlogPage() {
+  // Hitung batas data artikel untuk halaman ini
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  
+  // Potong maksimal 9 artikel sesuai halaman aktif
+  const postsToShow = filteredPosts.slice(startIndex, endIndex);
+
+  renderArticles(postsToShow);
+  renderPaginationButtons();
+}
+
+// Fungsi Render Elemen Artikel ke HTML
 function renderArticles(posts) {
   const container = document.getElementById("blog-container");
+  if (!container) return;
+  
   container.innerHTML = "";
 
   if (posts.length === 0) {
@@ -72,7 +93,6 @@ function renderArticles(posts) {
 
     const article = document.createElement("article");
     article.className = "bkm-blog-card";
-    // Simpan kategori di data-attribute artikel
     article.setAttribute("data-category", post.category.toUpperCase());
     
     article.innerHTML = `
@@ -87,24 +107,72 @@ function renderArticles(posts) {
   });
 }
 
-// Event Listener untuk Tombol Filter
+// Fungsi Render Tombol-Tombol Pagination
+function renderPaginationButtons() {
+  const pageNumbersContainer = document.getElementById("pageNumbers");
+  if (!pageNumbersContainer) return;
+
+  const totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
+  pageNumbersContainer.innerHTML = "";
+
+  // Bikin tombol angka halaman
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.innerText = i;
+    if (i === currentPage) {
+      btn.classList.add("active");
+    }
+    btn.onclick = () => goToPage(i);
+    pageNumbersContainer.appendChild(btn);
+  }
+
+  // Atur kondisi tombol Prev dan Next
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (prevBtn) {
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.onclick = () => changePage(-1);
+  }
+  
+  if (nextBtn) {
+    nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+    nextBtn.onclick = () => changePage(1);
+  }
+}
+
+// Navigasi Halaman
+function changePage(direction) {
+  currentPage += direction;
+  renderBlogPage();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goToPage(page) {
+  currentPage = page;
+  renderBlogPage();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Event Listener untuk Filter Kategori
 document.addEventListener("DOMContentLoaded", () => {
   const filterBtns = document.querySelectorAll(".filter-btn");
 
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      // Ubah status tombol aktif
       filterBtns.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
 
       const filterValue = btn.getAttribute("data-filter").toUpperCase();
 
       if (filterValue === "ALL") {
-        renderArticles(allPosts);
+        filteredPosts = [...allPosts];
       } else {
-        const filteredPosts = allPosts.filter(post => post.category.toUpperCase() === filterValue);
-        renderArticles(filteredPosts);
+        filteredPosts = allPosts.filter(post => post.category.toUpperCase() === filterValue);
       }
+
+      currentPage = 1; // Reset kembali ke halaman 1 saat filter berubah
+      renderBlogPage();
     });
   });
 });
