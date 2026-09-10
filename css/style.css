@@ -1246,7 +1246,8 @@ a:focus-visible, button:focus-visible {
   gap: 8px;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;    
+  margin-bottom: 60px; 
 }
 
 .pagination button {
