@@ -1,40 +1,39 @@
-.pagination {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
+let currentPage = 1;
+const totalPages = 5;
+
+function renderPagination() {
+  const pageNumbersContainer = document.getElementById("pageNumbers");
+  if (!pageNumbersContainer) return;
+
+  pageNumbersContainer.innerHTML = "";
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.innerText = i;
+    if (i === currentPage) {
+      btn.classList.add("active");
+    }
+    btn.onclick = () => goToPage(i);
+    pageNumbersContainer.appendChild(btn);
+  }
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (prevBtn) prevBtn.disabled = currentPage === 1;
+  if (nextBtn) nextBtn.disabled = currentPage === totalPages;
 }
 
-.pagination button {
-  padding: 8px 14px;
-  border: 1px solid #4b0082; /* Border indigo */
-  background-color: #fff;
-  color: #4b0082; /* Teks indigo */
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: all 0.2s ease-in-out;
+function changePage(direction) {
+  currentPage += direction;
+  renderPagination();
 }
 
-/* Efek saat kursor diarahkan ke tombol */
-.pagination button:hover:not(:disabled) {
-  background-color: #4b0082; /* Background jadi indigo */
-  color: #fff; /* Teks jadi putih */
+function goToPage(page) {
+  currentPage = page;
+  renderPagination();
 }
 
-/* Tampilan tombol halaman yang sedang aktif */
-.pagination button.active {
-  background-color: #4b0082; /* Indigo dominan */
-  color: white;
-  border-color: #4b0082;
-  box-shadow: 0 2px 6px rgba(75, 0, 130, 0.3); /* Soft shadow indigo */
-}
-
-/* Tampilan tombol saat disabled (tidak bisa diklik) */
-.pagination button:disabled {
-  border-color: #ccc;
-  color: #ccc;
-  opacity: 0.6;
-  cursor: not-allowed;
-}
+document.addEventListener("DOMContentLoaded", () => {
+  renderPagination();
+});
