@@ -1282,3 +1282,52 @@ a:focus-visible, button:focus-visible {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+
+/* ===== WhatsApp CTA ===== */
+.bkm-wa-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2fa82f;
+  border-color: #2fa82f;
+  color: #fff;
+  font-weight: 600;
+}
+.bkm-wa-cta svg { width: 18px; height: 18px; flex-shrink: 0; }
+.bkm-wa-cta:hover { background: #24862a; border-color: #24862a; color: #fff; }
+
+.bkm-wa-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.bkm-wa-float svg { width: 32px; height: 32px; }
+.bkm-wa-float:hover { transform: scale(1.08); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3); }
+.bkm-wa-float::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #25d366;
+  z-index: -1;
+  animation: bkm-wa-pulse 2s ease-out infinite;
+}
+@keyframes bkm-wa-pulse {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bkm-wa-float::before { animation: none; }
+}
